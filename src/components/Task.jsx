@@ -8,7 +8,7 @@ const Task = ({ task }) => {
   ];
 
   return (
-    <div className="flex">
+    <div className="flex pb-2">
       <h1>{task.name}</h1>
       {buttons.map((button) => (
         <button key={button.id} className={button.css}>

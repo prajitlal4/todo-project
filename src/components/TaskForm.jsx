@@ -7,15 +7,24 @@ const TaskForm = (props) => {
 
   return (
     <div>
-      <h3 className="text-3xl">Add new task</h3>
-      <form onSubmit={addTask}>
-        <div>
-          Task name: <input value={newTask} onChange={handleTaskChange} />
-        </div>
-        <div>
-          <button type="submit">Add</button>
-        </div>
-      </form>
+      <div className="flex flex-col items-center">
+        <h3 className="text-3xl p-4">Add new task</h3>
+        <form className="flex flex-row" onSubmit={addTask}>
+          <div>
+            Task name:{" "}
+            <input
+              className="border"
+              value={newTask}
+              onChange={handleTaskChange}
+            />
+          </div>
+          <div>
+            <button className="border" type="submit">
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

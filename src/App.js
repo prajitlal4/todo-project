@@ -39,9 +39,11 @@ const App = () => {
 
   return (
     <div>
-      <h1 className="text-5xl">To do app</h1>
-      <TaskForm addTask={addTask} handleTaskChange={handleTaskChange} newTask={newTask} />
-      <TaskList tasks={tasks} />
+      <div className="flex flex-col items-center p-5">
+        <h1 className="text-5xl">To do app</h1>
+        <TaskForm addTask={addTask} handleTaskChange={handleTaskChange} newTask={newTask} />
+        <TaskList tasks={tasks} />
+      </div>
     </div>
   );
 }
