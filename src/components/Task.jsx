@@ -11,7 +11,9 @@ const Task = ({ task }) => {
     <div className="flex">
       <h1>{task.name}</h1>
       {buttons.map((button) => (
-        <button className={button.css}>{button.type}</button>
+        <button key={button.id} className={button.css}>
+          {button.type}
+        </button>
       ))}
     </div>
   );

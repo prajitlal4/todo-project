@@ -22,8 +22,18 @@ const App = () => {
 
   const addTask = (event) => {
     event.preventDefault()
-    setTasks(tasks.concat({id: tasks.length+1, name: newTask, completed: false}))
-    setNewTask('')
+    const taskObject = {
+      id: tasks.length+1,
+      name: newTask,
+      completed: false,
+    }
+
+    axios
+      .post('http://localhost:3005/tasks', taskObject)
+      .then (response => {
+        setTasks(tasks.concat(response.data))
+        setNewTask('')
+      })
   }
 
   return (
