@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import './App.css';
+import Task from './components/Task.jsx'
 
 const App = () => {
   const [tasks, setTasks] = useState([])
@@ -40,7 +41,7 @@ const App = () => {
       <h1 className="text-3xl">Task list</h1>
       <div>
         {tasks.map(task =>
-          <p key="task.id">{task.name}</p> )}
+          <Task key="task.id" task={task} />)}
       </div>
     </div>
   );
