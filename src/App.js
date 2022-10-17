@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 import './App.css';
 
 const App = () => {
-  const [tasks, setTasks] = useState([
-    { id: 1, name: "Do some coding", completed: false },
-    { id: 2, name: "Take out the trash", completed: false}
-  ])
+  const [tasks, setTasks] = useState([])
   const [newTask, setNewTask] = useState('')
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3005/tasks')
+      .then(response => {
+        setTasks(response.data)
+      })
+  }, [])
 
   const handleTaskChange = (event) => {
     setNewTask(event.target.value)
