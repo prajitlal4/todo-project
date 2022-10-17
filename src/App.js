@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import './App.css';
-import Task from './components/Task.jsx'
+import TaskList from './components/TaskList.jsx'
+import TaskForm from './components/TaskForm.jsx'
 
 const App = () => {
   const [tasks, setTasks] = useState([])
@@ -38,21 +39,9 @@ const App = () => {
 
   return (
     <div>
-      <h1 className="text-3xl">To do app</h1>
-      <p>Add todo item</p>
-      <form onSubmit={addTask}>
-        <div>
-          Task name: <input value={newTask} onChange={handleTaskChange}/>
-        </div>
-        <div>
-          <button type="submit">Add</button>
-        </div>
-      </form>
-      <h1 className="text-3xl">Task list</h1>
-      <div>
-        {tasks.map(task =>
-          <Task key="task.id" task={task} />)}
-      </div>
+      <h1 className="text-5xl">To do app</h1>
+      <TaskForm addTask={addTask} handleTaskChange={handleTaskChange} newTask={newTask} />
+      <TaskList tasks={tasks} />
     </div>
   );
 }
