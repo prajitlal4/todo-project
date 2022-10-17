@@ -4,6 +4,7 @@ import axios from 'axios'
 import './App.css';
 import TaskList from './components/TaskList.jsx'
 import TaskForm from './components/TaskForm.jsx'
+import CompletedTaskList from './components/CompletedTaskList';
 
 const App = () => {
   const [tasks, setTasks] = useState([])
@@ -43,6 +44,7 @@ const App = () => {
         <h1 className="text-5xl">To do app</h1>
         <TaskForm addTask={addTask} handleTaskChange={handleTaskChange} newTask={newTask} />
         <TaskList tasks={tasks} />
+        <CompletedTaskList />
       </div>
     </div>
   );

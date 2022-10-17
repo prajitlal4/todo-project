@@ -7,8 +7,8 @@ const TaskForm = (props) => {
 
   return (
     <div>
-      <div className="flex flex-col items-center">
-        <h3 className="text-3xl p-4">Add new task</h3>
+      <div className="flex flex-col items-center pt-10">
+        <h3 className="text-3xl p-5">Add new task</h3>
         <form className="flex flex-row" onSubmit={addTask}>
           <div>
             Task name:{" "}
