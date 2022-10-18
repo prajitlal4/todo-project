@@ -1,20 +1,35 @@
 import React from "react";
 
+import { useState } from "react";
+
 const Task = ({ task }) => {
-  const buttons = [
-    { id: 1, type: "Complete", css: "border bg-green-700" },
-    { id: 2, type: "Edit", css: "border bg-gray-400" },
-    { id: 3, type: "Delete", css: "border bg-red-500" },
-  ];
+  const [editing, setEditing] = useState(false);
+  const [taskName, setTaskName] = useState(task.name);
+
+  const handleEditClick = () => {
+    if (editing === false) {
+      setEditing(true);
+    } else {
+      setEditing(false);
+    }
+  };
+
+  const handleTaskNameChange = (event) => {
+    setTaskName(event.target.value);
+  };
 
   return (
     <div className="flex pb-2">
-      <h1>{task.name}</h1>
-      {buttons.map((button) => (
-        <button key={button.id} className={button.css}>
-          {button.type}
-        </button>
-      ))}
+      <input type="checkbox" defaultChecked={task.completed} />
+      <input
+        readOnly={editing}
+        value={taskName}
+        onChange={handleTaskNameChange}
+      />
+      <button onClick={handleEditClick} className="border bg-gray-400">
+        Edit
+      </button>
+      <button className="border bg-red-500">Delete</button>
     </div>
   );
 };
