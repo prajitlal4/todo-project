@@ -5,9 +5,9 @@ import axios from "axios";
 
 const Task = (props) => {
   const task = props.task;
-  const setTasks = props.setTasks;
   const [editing, setEditing] = useState(true);
   const [taskName, setTaskName] = useState(task.name);
+  const handleTaskToDelete = props.handleTaskToDelete
 
   const handleEditClick = () => {
     if (editing === false) {
@@ -17,6 +17,10 @@ const Task = (props) => {
     }
   };
 
+  const handleDeleteClick = () => {
+    handleTaskToDelete(task)
+  }
+
   const handleTaskNameChange = (event) => {
     setTaskName(event.target.value);
   };
@@ -24,21 +28,11 @@ const Task = (props) => {
   const handleNewTaskUpload = (event) => {
     event.preventDefault();
     const url = "http://localhost:3005/tasks/";
-    const changedTask = { ...task.name, name: taskName };
+    const changedTask = { ...task, name: taskName };
 
     axios.put(url + task.id, changedTask).then((response) => {
       handleEditClick();
       setTaskName(changedTask.name);
-    });
-  };
-
-  const handleDeleteTask = (event) => {
-    const url = "http://localhost:3005/tasks/";
-    const deletedTask = { ...task.name, name: taskName };
-
-    axios.delete(url + task.id, deletedTask);
-    axios.get(url).then((response) => {
-      setTasks(response.data);
     });
   };
 
@@ -60,7 +54,7 @@ const Task = (props) => {
           Save
         </button>
       )}
-      <button onClick={handleDeleteTask} className="border bg-red-500">
+      <button onClick={handleDeleteClick}className="border bg-red-500">
         Delete
       </button>
     </div>

@@ -1,9 +1,3 @@
 {
-  "tasks": [
-    {
-      "id": 2,
-      "name": "Kill shekin",
-      "completed": false
-    }
-  ]
+  "tasks": []
 }
