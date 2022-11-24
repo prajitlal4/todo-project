@@ -1,11 +1,11 @@
 import React from "react";
 
-import Task from "./Task.jsx";
+import Task from "./Task";
 
 const TaskList = (props) => {
-  const tasks = props.tasks
-  const handleTaskList = props.handleTaskList
-  const handleTaskToDelete = props.handleTaskToDelete
+  const tasks = props.tasks;
+  const handleTaskList = props.handleTaskList;
+  const handleTaskToDelete = props.handleTaskToDelete;
 
   return (
     <div>
@@ -13,7 +13,12 @@ const TaskList = (props) => {
         <h1 className="text-3xl p-4">Task list</h1>
         <div>
           {tasks.map((task) => (
-            <Task key="task.id" task={task} handleTaskList={handleTaskList} handleTaskToDelete={handleTaskToDelete}/>
+            <Task
+              key="task.id"
+              task={task}
+              handleTaskList={handleTaskList}
+              handleTaskToDelete={handleTaskToDelete}
+            />
           ))}
         </div>
       </div>

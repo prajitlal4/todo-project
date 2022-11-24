@@ -7,7 +7,7 @@ const Task = (props) => {
   const task = props.task;
   const [editing, setEditing] = useState(true);
   const [taskName, setTaskName] = useState(task.name);
-  const handleTaskToDelete = props.handleTaskToDelete
+  const handleTaskToDelete = props.handleTaskToDelete;
 
   const handleEditClick = () => {
     if (editing === false) {
@@ -18,8 +18,8 @@ const Task = (props) => {
   };
 
   const handleDeleteClick = () => {
-    handleTaskToDelete(task)
-  }
+    handleTaskToDelete(task);
+  };
 
   const handleTaskNameChange = (event) => {
     setTaskName(event.target.value);
@@ -54,7 +54,7 @@ const Task = (props) => {
           Save
         </button>
       )}
-      <button onClick={handleDeleteClick}className="border bg-red-500">
+      <button onClick={handleDeleteClick} className="border bg-red-500">
         Delete
       </button>
     </div>

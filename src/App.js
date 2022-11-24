@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import './App.css';
-import TaskList from './components/TaskList.jsx'
-import TaskForm from './components/TaskForm.jsx'
+import TaskList from './components/TaskList'
+import TaskForm from './components/TaskForm'
 
 const App = () => {
   const [tasks, setTasks] = useState([])
@@ -15,26 +15,24 @@ const App = () => {
       .get('http://localhost:3005/tasks')
       .then(response => {
         setTasks(response.data)
-        console.log('promise fulfilled')
       })
   }, [])
+
+  useEffect(() => {
+    axios
+      .delete('http://localhost:3005/tasks/' + taskToDelete.id)
+      .then(response => {
+        setTasks(tasks.filter(task => task.id !== taskToDelete.id))
+        setTaskToDelete('')
+    })
+  }, [tasks, taskToDelete.id])
 
   const handleTaskChange = (event) => {
     setNewTask(event.target.value)
   }
 
-  const deleteTask = () => {
-    axios
-      .delete('http://localhost:3005/tasks/' + taskToDelete.id, taskToDelete)
-      .then(response => {
-        setTasks(tasks)
-        setTaskToDelete('')
-      })
-  }
-
-  const handleTaskToDelete = (task) => {
-    setTaskToDelete(task)
-    deleteTask()
+  const handleTaskToDelete = (taskToDelete) => {
+    setTaskToDelete(taskToDelete)
   }
 
   const addTask = (event) => {
